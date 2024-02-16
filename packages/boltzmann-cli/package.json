@@ -1,0 +1,40 @@
+{
+	"name": "@samouraiwallet/boltzmann-cli",
+	"version": "0.1.0",
+	"author": "Katana Cryptographic Ltd.",
+	"license": "LGPL-3.0",
+	"homepage": "https://github.com/Dojo-Open-Source-Project/boltzmann",
+	"type": "module",
+	"engines": {
+		"node": ">=18"
+	},
+	"bin": {
+		"boltzmann": "./dist/bin.js"
+	},
+	"scripts": {
+		"lint": "biome lint ./src",
+		"lint:fix": "biome lint --write ./src",
+		"pretty": "biome format --write ./src",
+		"types": "tsc --noEmit",
+		"build:clean": "rm -rf ./dist",
+		"build:esm": "tsc -p tsconfig.build.json",
+		"build": "pnpm run build:clean && pnpm run build:esm && chmod +x ./dist/bin.js",
+		"prepack": "pnpm install && pnpm run lint && pnpm run types && pnpm run build"
+	},
+	"dependencies": {
+		"@samouraiwallet/boltzmann": "workspace:0.1.0",
+		"yargs": "^17.7.2",
+		"undici": "^6.20.1",
+		"socks": "^2.8.3"
+	},
+	"devDependencies": {
+		"@types/yargs": "^17.0.32"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Dojo-Open-Source-Project/boltzmann.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Dojo-Open-Source-Project/boltzmann/issues"
+	}
+}

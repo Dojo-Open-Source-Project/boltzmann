@@ -1,0 +1,11 @@
+src/
+test/
+coverage/
+.vscode/
+.idea/
+.gitignore
+vitest.config.ts
+
+*.map
+
+tsconfig*
