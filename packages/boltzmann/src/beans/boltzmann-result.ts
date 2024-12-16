@@ -182,3 +182,5 @@ export class BoltzmannResult extends TxProcessorResult {
 		}
 	}
 }
+
+export type BoltzmannResultJson = ReturnType<BoltzmannResult["toJSON"]>;

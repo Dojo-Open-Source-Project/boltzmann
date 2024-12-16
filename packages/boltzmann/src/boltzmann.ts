@@ -1,4 +1,7 @@
-import { BoltzmannResult } from "./beans/boltzmann-result.js";
+import {
+	BoltzmannResult,
+	type BoltzmannResultJson,
+} from "./beans/boltzmann-result.js";
 import {
 	type BoltzmannOptions,
 	type BoltzmannSettings,
@@ -8,7 +11,13 @@ import {
 import { TxProcessor } from "./processor/tx-processor.js";
 import { CustomMap, Logger } from "./utils/utils.js";
 
-export type { BoltzmannOptions, LinkerOptions, TxosInput };
+export type {
+	BoltzmannOptions,
+	LinkerOptions,
+	TxosInput,
+	BoltzmannResult,
+	BoltzmannResultJson,
+};
 
 type TxosInput = { inputs: [string, number][]; outputs: [string, number][] };
 
