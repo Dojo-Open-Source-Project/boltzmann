@@ -14,8 +14,17 @@ export enum LogLevel {
 
 export interface BoltzmannOptions {
 	logLevel?: keyof typeof LogLevel;
+	/**
+	 * Maximum duration in seconds for the Boltzmann process
+	 */
 	maxDuration?: number;
+	/**
+	 * Maximum number of transaction inputs or outputs
+	 */
 	maxTxos?: number;
+	/**
+	 * Maximum ratio of CoinJoin intrafees
+	 */
 	maxCjIntrafeesRatio?: number;
 	linkerOptions?: LinkerOptions;
 }
