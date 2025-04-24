@@ -1,6 +1,6 @@
 {
 	"name": "@samouraiwallet/boltzmann",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"author": "Katana Cryptographic Ltd.",
 	"license": "LGPL-3.0",
 	"homepage": "https://github.com/Dojo-Open-Source-Project/boltzmann",
@@ -30,10 +30,10 @@
 	},
 	"devDependencies": {
 		"@types/big.js": "^6.2.2",
-		"vitest": "^2.1.3"
+		"vitest": "^3.1.2"
 	},
 	"dependencies": {
-		"big.js": "^6.2.2"
+		"big.js": "^7.0.1"
 	},
 	"repository": {
 		"type": "git",
