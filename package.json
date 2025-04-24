@@ -6,8 +6,8 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
-		"@types/node": "^20.16.12",
-		"typescript": "^5.6.3"
+		"@types/node": "^20.17.30",
+		"typescript": "^5.8.3"
 	},
 	"scripts": {
 		"lint": "biome lint ./packages",
