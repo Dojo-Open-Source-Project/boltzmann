@@ -206,6 +206,12 @@ class Progress {
 	}
 }
 
+/**
+ * A custom implementation of the `Map` interface that allows duplicate keys
+ *
+ * @template K The type of keys in the map.
+ * @template V The type of values in the map.
+ */
 export class CustomMap<K, V> implements Map<K, V> {
 	private state: [K, V][];
 
