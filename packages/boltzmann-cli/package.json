@@ -22,7 +22,7 @@
 		"prepack": "pnpm install && pnpm run lint && pnpm run types && pnpm run build"
 	},
 	"dependencies": {
-		"@samouraiwallet/boltzmann": "workspace:0.2.0",
+		"@samouraiwallet/boltzmann": "workspace:*",
 		"socks": "^2.8.4",
 		"undici": "^6.21.2",
 		"yargs": "^17.7.2"
