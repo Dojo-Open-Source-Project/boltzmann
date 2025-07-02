@@ -1,5 +1,22 @@
 import { LogLevel } from "../beans/boltzmann-settings.js";
 
+export class TimeoutError extends Error {
+	readonly _tag = "TimeoutError";
+
+	constructor() {
+		super("Timeout has been reached");
+		this.name = "TimeoutError";
+	}
+}
+export class TooManyTxosError extends Error {
+	readonly _tag = "TooManyTxosError";
+
+	constructor() {
+		super("Txo count is over the limit");
+		this.name = "TooManyTxosError";
+	}
+}
+
 function isNodeJS(): boolean {
 	return (
 		typeof process !== "undefined" &&
@@ -206,6 +223,12 @@ class Progress {
 	}
 }
 
+/**
+ * A custom implementation of the `Map` interface that allows duplicate keys
+ *
+ * @template K The type of keys in the map.
+ * @template V The type of values in the map.
+ */
 export class CustomMap<K, V> implements Map<K, V> {
 	private state: [K, V][];
 
@@ -246,10 +269,9 @@ export class CustomMap<K, V> implements Map<K, V> {
 
 	forEach(
 		callbackfn: (value: V, key: K, map: CustomMap<K, V>) => void,
-		// biome-ignore lint/suspicious/noExplicitAny:
+		// biome-ignore lint/suspicious/noExplicitAny: ignore
 		thisArg?: any,
 	): void {
-		// biome-ignore lint/complexity/noForEach:
 		this.state.forEach(([k, v]) => callbackfn.call(thisArg, v, k, this));
 	}
 

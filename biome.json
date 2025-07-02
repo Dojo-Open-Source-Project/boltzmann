@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.3/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
 	"vcs": {
 		"enabled": false,
 		"clientKind": "git",
@@ -7,15 +7,13 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": ["tsconfig.json", "dist/**"]
+		"includes": ["**", "!**/tsconfig.json", "!**/dist/**"]
 	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab"
 	},
-	"organizeImports": {
-		"enabled": true
-	},
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"linter": {
 		"enabled": true,
 		"rules": {
@@ -23,7 +21,15 @@
 			"style": {
 				"noUselessElse": "off",
 				"noParameterAssign": "off",
-				"noNonNullAssertion": "off"
+				"noNonNullAssertion": "off",
+				"useAsConstAssertion": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useSelfClosingElements": "error",
+				"useSingleVarDeclarator": "error",
+				"noUnusedTemplateLiteral": "error",
+				"useNumberNamespace": "error",
+				"noInferrableTypes": "error"
 			},
 			"complexity": {
 				"noStaticOnlyClass": "off"

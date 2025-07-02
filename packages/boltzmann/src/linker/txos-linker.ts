@@ -11,7 +11,12 @@ import {
 	type UnpackLinkMatrixResult,
 } from "../utils/interfaces.js";
 import { ListsUtils } from "../utils/lists-utils.js";
-import { CustomMap, type Logger, Utils } from "../utils/utils.js";
+import {
+	CustomMap,
+	type Logger,
+	TooManyTxosError,
+	Utils,
+} from "../utils/utils.js";
 import type { IntraFees } from "./intra-fees.js";
 import { TxosLinkerResult } from "./txos-linker-result.js";
 
@@ -72,7 +77,8 @@ export class TxosLinker {
 	 *     joinmarket transactions fees_maker are potential max "fees" received by a participant from
 	 *     another participant fees_taker are potential max "fees" paid by a participant to all others
 	 *     participants
-	 * @return
+	 * @returns {TxosLinkerResult}
+	 * @throws {TooManyTxosError | TimeoutError}
 	 */
 	public process(
 		txos: Txos,
@@ -261,8 +267,6 @@ export class TxosLinker {
 			outputs: new CustomMap([...txos.outputs.entries()]),
 		};
 
-		const reversedPacks: Pack[] = [...this.packs].reverse();
-
 		for (let i = this.packs.length - 1; i >= 0; i--) {
 			const pack: Pack = this.packs[i];
 			const result: UnpackLinkMatrixResult = this.unpackLinkMatrix2(
@@ -437,13 +441,20 @@ export class TxosLinker {
 	}
 
 	// LIMITS
+	/**
+	 *
+	 * @param {Txos} txos
+	 * @private
+	 * @returns {boolean}
+	 * @throws {TooManyTxosError}
+	 */
 	private checkLimitOk(txos: Txos): boolean {
 		const lenIn: number = txos.inputs.size;
 		const lenOut: number = txos.outputs.size;
 		const maxCard: number = Math.max(lenIn, lenOut);
 		if (this.maxTxos !== null && maxCard > this.maxTxos) {
 			this.Logger.logInfo("maxTxos limit reached!");
-			return false;
+			throw new TooManyTxosError();
 		}
 		return true;
 	}
