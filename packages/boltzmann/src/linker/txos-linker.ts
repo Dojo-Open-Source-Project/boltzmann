@@ -267,8 +267,6 @@ export class TxosLinker {
 			outputs: new CustomMap([...txos.outputs.entries()]),
 		};
 
-		const reversedPacks: Pack[] = [...this.packs].reverse();
-
 		for (let i = this.packs.length - 1; i >= 0; i--) {
 			const pack: Pack = this.packs[i];
 			const result: UnpackLinkMatrixResult = this.unpackLinkMatrix2(

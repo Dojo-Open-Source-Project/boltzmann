@@ -262,7 +262,7 @@ export class TxosAggregator {
 			const ircs: number[][] = matInAggCmbn.get(t.ir)!;
 			const lenIrcs: number = ircs ? ircs.length : 0;
 
-			// biome-ignore lint/correctness/noUnreachable:
+			// biome-ignore lint/correctness/noUnreachable: false positive
 			for (let i = t.idxIl; i < lenIrcs; i++) {
 				iterations++;
 				nIdxIl = i;

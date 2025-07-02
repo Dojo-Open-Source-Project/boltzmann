@@ -23,7 +23,7 @@
 	},
 	"dependencies": {
 		"@samouraiwallet/boltzmann": "workspace:*",
-		"socks": "^2.8.4",
+		"socks": "^2.8.5",
 		"undici": "^6.21.2",
 		"yargs": "^17.7.2"
 	},

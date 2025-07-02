@@ -269,10 +269,9 @@ export class CustomMap<K, V> implements Map<K, V> {
 
 	forEach(
 		callbackfn: (value: V, key: K, map: CustomMap<K, V>) => void,
-		// biome-ignore lint/suspicious/noExplicitAny:
+		// biome-ignore lint/suspicious/noExplicitAny: ignore
 		thisArg?: any,
 	): void {
-		// biome-ignore lint/complexity/noForEach:
 		this.state.forEach(([k, v]) => callbackfn.call(thisArg, v, k, this));
 	}
 

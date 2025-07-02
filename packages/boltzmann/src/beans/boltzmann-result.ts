@@ -141,7 +141,7 @@ export class BoltzmannResult extends TxProcessorResult {
 
 		console.log("Benchmarks:");
 
-		// biome-ignore lint/suspicious/noExplicitAny:
+		// biome-ignore lint/suspicious/noExplicitAny: ignore
 		const benchmarks: any[] = [];
 
 		benchmarks.push(["duration", this.duration]);
@@ -162,7 +162,7 @@ export class BoltzmannResult extends TxProcessorResult {
 			]);
 		}
 
-		// biome-ignore lint/suspicious/noExplicitAny:
+		// biome-ignore lint/suspicious/noExplicitAny: ignore
 		const exportObj: any = {};
 		exportObj.ins = [...this.txos.inputs.entries()];
 		exportObj.outs = [...this.txos.outputs.entries()];
