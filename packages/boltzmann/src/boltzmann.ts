@@ -11,6 +11,8 @@ import {
 import { TxProcessor } from "./processor/tx-processor.js";
 import { CustomMap, Logger } from "./utils/utils.js";
 
+export { TooManyTxosError, TimeoutError } from "./utils/utils.js";
+
 export type {
 	BoltzmannOptions,
 	LinkerOptions,
@@ -36,6 +38,10 @@ export class Boltzmann {
 		);
 	}
 
+	/**
+	 * @param txos
+	 * @throws {TooManyTxosError | TimeoutError}
+	 */
 	public process(txos: TxosInput): BoltzmannResult {
 		return this.processWithOptions(
 			txos,
@@ -44,6 +50,12 @@ export class Boltzmann {
 		);
 	}
 
+	/**
+	 * @param txos
+	 * @param maxCjIntrafeesRatio
+	 * @param linkerOptions
+	 * @throws {TooManyTxosError | TimeoutError}
+	 */
 	public processWithOptions(
 		txos: TxosInput,
 		maxCjIntrafeesRatio: number,

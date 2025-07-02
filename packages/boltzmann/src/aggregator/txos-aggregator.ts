@@ -4,7 +4,7 @@ import type {
 	TxosAggregates,
 	TxosAggregatesMatches,
 } from "../utils/interfaces.js";
-import { type Logger, Utils } from "../utils/utils.js";
+import { type Logger, TimeoutError, Utils } from "../utils/utils.js";
 import { TxosAggregatorResult } from "./txos-aggregator-result.js";
 
 class ComputeLinkMatrixTask {
@@ -212,7 +212,7 @@ export class TxosAggregator {
 	 * matrix Implements a depth-first traversal of the inputs combinations tree (right to left) For
 	 * each input combination we compute the matching output combinations. This is a basic brute-force
 	 * solution. Will have to find a better method later.
-	 *
+	 * @throws {TimeoutError}
 	 */
 	public computeLinkMatrix(
 		txos: Txos,
@@ -251,7 +251,7 @@ export class TxosAggregator {
 
 			if (maxDuration && deltaTimeSeconds >= maxDuration) {
 				this.Logger.logInfo("maxDuration limit reached!");
-				return new TxosAggregatorResult(0, []);
+				throw new TimeoutError();
 			}
 
 			// Gets data from task

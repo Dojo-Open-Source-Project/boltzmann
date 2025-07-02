@@ -1,5 +1,22 @@
 import { LogLevel } from "../beans/boltzmann-settings.js";
 
+export class TimeoutError extends Error {
+	readonly _tag = "TimeoutError";
+
+	constructor() {
+		super("Timeout has been reached");
+		this.name = "TimeoutError";
+	}
+}
+export class TooManyTxosError extends Error {
+	readonly _tag = "TooManyTxosError";
+
+	constructor() {
+		super("Txo count is over the limit");
+		this.name = "TooManyTxosError";
+	}
+}
+
 function isNodeJS(): boolean {
 	return (
 		typeof process !== "undefined" &&

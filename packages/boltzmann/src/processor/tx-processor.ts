@@ -33,7 +33,8 @@ export class TxProcessor {
 	 * @param maxCjIntrafeesRatio maxCjIntrafeesRatio max intrafees paid by the taker of a coinjoined
 	 *     transaction. Expressed as a percentage of the coinjoined amount
 	 * @param linkerOptions linkerOptions options to be applied during processing
-	 * @return TxProcessorResult
+	 * @return {TxProcessorResult}
+	 * @throws {TooManyTxosError | TimeoutError}
 	 */
 	public processTx(
 		txos: Txos,

@@ -40,8 +40,10 @@ See [@samouraiwallet/boltzmann-cli](../boltzmann-cli)
 
 Boltzmann computation is CPU bound and blocking, so it is recommended to run it in a separate worker thread or dedicated process to prevent blocking of the main thread.
 
+Boltzmann will throw `TimeoutError` or `TooManyTxosError` when either of these limits is encountered.
+
 ```typescript
-import {Boltzmann, BoltzmannResult} from '@samouraiwallet/boltzmann';
+import {Boltzmann, BoltzmannResult, TimeoutError, TooManyTxosError} from '@samouraiwallet/boltzmann';
 
 // instantiate Boltzmann
 const boltzmann = new Boltzmann({
@@ -62,9 +64,18 @@ const transaction = {
   ]
 }
 
-const result: BoltzmannResult = boltzmann.process(transaction);
+try {
+  const result: BoltzmannResult = boltzmann.process(transaction);
 
-console.log(result.toJSON());
+  console.log(result.toJSON());
+} catch (error) {
+  if (error instanceof TimeoutError) {
+    console.error("Timeout has been reached")
+  }
+  if (error instanceof TooManyTxosError) {
+    console.error("Too many txos to compute")
+  }
+}
 /*
 {
   nbCmbn: number,
