@@ -1,3 +1,9 @@
+# Archived
+
+This project has been moved to [dojo-tools repository](https://github.com/Dojo-Open-Source-Project/dojo-tools/tree/master/packages).
+
+---
+
 # Boltzmann TS monorepo
 
 A Typescript library computing the entropy of Bitcoin transactions and the linkability of their inputs and outputs.
